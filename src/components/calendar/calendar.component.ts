@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Slides } from 'ionic-angular';
 
 /**
@@ -12,8 +12,10 @@ import { Slides } from 'ionic-angular';
   templateUrl: 'calendar.component.html'
 })
 
-export class Calendar {  
-  
+export class Calendar { 
+
+  @ViewChild(Slides) slides: Slides;
+
   weeks = [
     {Full:'Segunda', Part: 'Seg', First: 'S'},
     {Full:'Terça', Part:'Ter', First:'T'},
@@ -38,6 +40,12 @@ export class Calendar {
     {Name: 'Novembro', Days: 30},
     {Name: 'Dezembro', Days: 31}
   ];
+
+  daysGridRow = [1,2,3,4,5,6];
+  
+  slideChanged(){
+    console.log(this.slides._activeIndex);
+  }
 
   constructor() {
   }
