@@ -39,10 +39,6 @@ export class Calendar {
     {Name: 'Dezembro', Days: 31}
   ];
 
-  slideChanged() {
-    console.log("month.Name");
-    //this.months.push({Name: 'Janeiro', Days: 31});
-  }
   constructor() {
   }
 

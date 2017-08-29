@@ -1,7 +1,7 @@
 <ion-grid>
     <div>
-        <ion-slides>
-            <ion-slide *ngFor="let month of months" (onmousemove)="slideChanged()">
+        <ion-slides  loop="true">
+            <ion-slide *ngFor="let month of months">
                 <h1>{{month.Name}}</h1>
             </ion-slide>
            
@@ -9,6 +9,5 @@
         <ion-row responsive-sm>
             <ion-col col-sm text-center *ngFor="let day of weeks">{{day.Part}}</ion-col>
         </ion-row>
-
     </div>
 </ion-grid>
