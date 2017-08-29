@@ -1,6 +1,6 @@
 {
-  "name": "tcc",
+  "name": "calendarhardlevel",
   "app_id": "",
-  "type": "ionic-angular",
-  "integrations": {}
+  "v2": true,
+  "typescript": true
 }
