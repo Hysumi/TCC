@@ -1,7 +1,26 @@
-<ion-menu [content]="content">
-    <ion-content padding>
-        <h1>this is </h1>
+<ion-menu [content]="content" side="right" type="overlay">
+    <ion-header>
+        <ion-toolbar color="primary">
+            <ion-title>Menu</ion-title>
+        </ion-toolbar>
+    </ion-header>
+    <ion-content>
+
+        <ion-list-header>        <ion-icon name="calendar" item-start></ion-icon>
+            Calendar</ion-list-header>
+        <button ion-item detail-none>
+            <ion-icon class="calendar-day-icon" item-start></ion-icon>
+            <ion-label> Day </ion-label>
+        </button>
+        <button ion-item detail-none>
+            <ion-icon class="calendar-week-icon" item-start></ion-icon>
+            <ion-label> Week </ion-label>
+        </button>
+        <button ion-item no-lines detail-none>
+            <ion-icon class="calendar-month-icon" item-start></ion-icon>
+            <ion-label> Month </ion-label>
+        </button>
+        <ion-item-divider></ion-item-divider>
     </ion-content>
 </ion-menu>
-
 <ion-nav [root]="rootPage" #content></ion-nav>
