@@ -10,20 +10,23 @@
 </ion-header>
 
 <ion-content>
-  <ion-label class="center capitalize">{{ viewTitle }}</ion-label >
+  <ion-label class="center capitalize">{{ viewTitle }}</ion-label>
   <ion-fab right bottom>
     <button ion-fab color="primary">
       <ion-icon name="arrow-dropleft"></ion-icon>
     </button>
     <ion-fab-list side="left">
       <button color="fabOptions" ion-fab>
+        <ion-icon class="health-book"></ion-icon>
+      </button>
+      <button color="fabOptions" ion-fab>
         <ion-icon class="calendar-day-icon"></ion-icon>
       </button>
-      <button  color="fabOptions" ion-fab>
+      <button color="fabOptions" ion-fab>
         <ion-icon class="calendar-week-icon"></ion-icon>
       </button>
-      <button  color="fabOptions" ion-fab>
-        <ion-icon class="calendar-month-icon"></ion-icon>
+      <button color="fabOptions" ion-fab>
+          <ion-icon class="calendar-month-icon"></ion-icon>
       </button>
     </ion-fab-list>
   </ion-fab>
