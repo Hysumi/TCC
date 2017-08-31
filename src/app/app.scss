@@ -14,3 +14,32 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+.calendar-month-icon {
+    content: url('../assets/img/icons/icons8-Month View-40.png') !important;
+    height: 32px;
+    width: 32px; 
+}
+.calendar-week-icon {
+    content: url('../assets/img/icons/icons8-Week View-50.png') !important;
+    height: 32px;
+    width: 32px; 
+}
+
+.calendar-day-icon {
+    content: url('../assets/img/icons/icons8-Day_View-40.png') !important;
+    height: 32px;
+    width: 32px; 
+}
+
+.add-pacient {
+    content: url('../assets/img/icons/icons8-Plus-40.png') !important;
+    height: 32px;
+    width: 32px; 
+}
+
+.search-pacient {
+    content: url('../assets/img/icons/icons8-Search-40.png') !important;
+    height: 32px;
+    width: 32px; 
+}
