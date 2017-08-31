@@ -1,5 +1,12 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage,
+         NavController, 
+         NavParams,  
+         ModalController, 
+         AlertController,
+         PopoverController } from 'ionic-angular';
+import * as moment from 'moment';
+//import { CalendarPopover } from '../calendar-popover/calendar-popover';
 
 @IonicPage()
 @Component({
@@ -8,11 +15,49 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class CalendarPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  eventSource = [];
+  selectOptions = [];
+  viewTitle: string;
+  selectedDay = new Date();
+  calendar = {
+    mode: 'month',
+    currentDate: new Date()
+  };
+
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams, 
+    private modalCtrl: ModalController, 
+    private alertCtrl: AlertController,
+    public popoverCtrl: PopoverController) {
+  }
+ 
+  onViewTitleChanged(title) {
+    this.viewTitle = title;
+  }
+ 
+  onEventSelected(event) {
+    let start = moment(event.startTime).format('LLLL');
+    let end = moment(event.endTime).format('LLLL');
+    
+    let alert = this.alertCtrl.create({
+      title: '' + event.title,
+      subTitle: 'From: ' + start + '<br>To: ' + end,
+      buttons: ['OK']
+    })
+    alert.present();
+  }
+ 
+  onTimeSelected(ev) {
+    this.selectedDay = ev.selectedTime;
+  }
+  showOptions($event){
+    
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad CalendarPage');
+  openCalendarPopover(event){
+    let popover = this.popoverCtrl.create('CalendarPopover');
+    popover.present({
+      ev: event
+    });
   }
-
 }

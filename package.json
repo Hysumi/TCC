@@ -24,10 +24,15 @@
     "@ionic-native/splash-screen": "3.12.1",
     "@ionic-native/status-bar": "3.12.1",
     "@ionic/storage": "2.0.1",
+    "angular2-i18next": "^1.1.2",
+    "intl": "^1.2.5",
     "ionic-angular": "3.6.0",
+    "ionic2-calendar": "^0.3.9",
     "ionicons": "3.0.0",
+    "moment": "^2.18.1",
     "rxjs": "5.4.0",
     "sw-toolbox": "3.6.0",
+    "ts-smart-logger": "0.0.4",
     "zone.js": "0.8.12"
   },
   "devDependencies": {
@@ -36,12 +41,12 @@
   },
   "cordovaPlugins": [
     "cordova-plugin-whitelist",
-    "cordova-plugin-console",
     "cordova-plugin-statusbar",
+    "cordova-plugin-console",
     "cordova-plugin-device",
     "cordova-plugin-splashscreen",
     "ionic-plugin-keyboard"
   ],
   "cordovaPlatforms": [],
-  "description": "calendarhardlevel: An Ionic project"
+  "description": "TCC: An Ionic project"
 }
