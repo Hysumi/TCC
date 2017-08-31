@@ -3,8 +3,7 @@ import { IonicPage,
          NavController, 
          NavParams,  
          ModalController, 
-         AlertController,
-         PopoverController } from 'ionic-angular';
+         AlertController} from 'ionic-angular';
 import * as moment from 'moment';
 //import { CalendarPopover } from '../calendar-popover/calendar-popover';
 
@@ -27,8 +26,7 @@ export class CalendarPage {
   constructor(public navCtrl: NavController, 
     public navParams: NavParams, 
     private modalCtrl: ModalController, 
-    private alertCtrl: AlertController,
-    public popoverCtrl: PopoverController) {
+    private alertCtrl: AlertController) {
   }
  
   onViewTitleChanged(title) {
@@ -52,12 +50,5 @@ export class CalendarPage {
   }
   showOptions($event){
     
-  }
-
-  openCalendarPopover(event){
-    let popover = this.popoverCtrl.create('CalendarPopover');
-    popover.present({
-      ev: event
-    });
   }
 }

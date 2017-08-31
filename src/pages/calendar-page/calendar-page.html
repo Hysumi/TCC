@@ -5,11 +5,6 @@
         <ion-icon name="menu"></ion-icon>
       </button>
     </ion-buttons>
-    <ion-buttons end>
-      <button ion-button icon-only (click)="openCalendarPopover($event)">
-        <ion-icon name="more"></ion-icon>
-      </button>
-    </ion-buttons>
     <ion-title>
       Calendar
     </ion-title>
@@ -20,7 +15,25 @@
   <ion-card-content class="center">
     {{ viewTitle }}
   </ion-card-content>
+  <ion-fab right bottom>
+    <button ion-fab color="primary">
+      <ion-icon name="arrow-dropleft"></ion-icon>
+    </button>
+    <ion-fab-list side="left">
+      <button color="fabOptions" ion-fab>
+        <ion-icon class="calendar-day-icon"></ion-icon>
+      </button>
+      <button  color="fabOptions" ion-fab>
+        <ion-icon class="calendar-week-icon"></ion-icon>
+      </button>
+      <button  color="fabOptions" ion-fab>
+        <ion-icon class="calendar-month-icon"></ion-icon>
+      </button>
+    </ion-fab-list>
+  </ion-fab>
+
   <calendar [eventSource]="eventSource" [calendarMode]="calendar.mode" [currentDate]="calendar.currentDate" (onEventSelected)="onEventSelected($event)"
     (onTitleChanged)="onViewTitleChanged($event)" (onTimeSelected)="onTimeSelected($event)" step="30" class="calendar">
   </calendar>
+
 </ion-content>

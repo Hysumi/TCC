@@ -13,3 +13,19 @@ th{
 .center{
     text-align: center;
 }
+
+.calendar-month-icon {
+    content: url('../assets/img/icons/icons8-Month View-40.png') !important;
+    height: 32px;
+    width: 32px; 
+}
+.calendar-week-icon {
+    content: url('../assets/img/icons/icons8-Week View-50.png') !important;
+    height: 32px;
+    width: 32px; 
+}
+.calendar-day-icon {
+    content: url('../assets/img/icons/icons8-Day_View-40.png') !important;
+    height: 32px;
+    width: 32px; 
+}
