@@ -17,19 +17,64 @@
 
 
 <ion-content padding>
-  <ion-item>
-    <ion-label stacked>Nome:</ion-label>
-    <ion-input type="text"></ion-input>
-  </ion-item>
 
-  <ion-item>
-    <ion-label stacked>Sobrenome</ion-label>
-    <ion-input type="text"></ion-input>
-  </ion-item>
+  <ion-list>
+    <ion-list-header>Informações do Paciente </ion-list-header>
+    <ion-item>
+      <ion-label color="primary">Nome Completo:</ion-label>
+      <ion-input type="text" placeholder="Nome do Paciente"></ion-input>
+    </ion-item>
 
-  <ion-item>
-    <ion-label stacked>RG</ion-label>
-    <ion-input type="text"></ion-input>
-  </ion-item>
+    <ion-item>
+      <ion-label color="primary">Data de Nasc.: </ion-label>
+      <ion-input type="date"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="primary">RG: </ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="primary">Endereço:</ion-label>
+      <ion-input type="text" placeholder="Rua/Bairro/Numero"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="primary">Telefone:</ion-label>
+      <ion-input type="tel" placeholder="    Contato Principal."></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="primary">Telefone 2:</ion-label>
+      <ion-input type="tel" placeholder="(Opcional)"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-list-header>
+      <ion-label>Informações Adicionais</ion-label>
+    </ion-list-header>
+
+    <ion-item>
+      <ion-label color="primary">Tipo Sanguíneo:</ion-label>
+      <ion-select [(ngModel)]="tipoSangue" placeholder="Tipo">
+        <ion-option value="0">A+</ion-option>
+        <ion-option value="1">AB+</ion-option>
+        <ion-option value="2">B+</ion-option>
+        <ion-option value="3">O+</ion-option>
+        <ion-option value="4">A-</ion-option>
+        <ion-option value="5">AB-</ion-option>
+        <ion-option value="6">B-</ion-option>
+        <ion-option value="7">O-</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label color="primary">Alergias: </ion-label>    
+      <ion-textarea></ion-textarea>    
+    </ion-item>
+    
+  </ion-list>
 
 </ion-content>

@@ -9,6 +9,8 @@ import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angul
 })
 export class AddPacientModalPage {
 
+  public tipoSangue;
+
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               private view: ViewController) {
@@ -18,7 +20,9 @@ export class AddPacientModalPage {
     console.log('ionViewDidLoad AddPacientModalPage');
   }
 
+
   closeAddPage(){
     this.view.dismiss();
   }
+  
 }

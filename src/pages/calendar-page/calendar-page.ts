@@ -19,7 +19,7 @@ export class CalendarPage {
   viewTitle: string;
   selectedDay = new Date();
   calendar = {
-    mode: 'day',
+    mode: 'month',
     currentDate: new Date()
   };
   calendarType: string;
