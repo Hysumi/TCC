@@ -25,5 +25,9 @@ export class MyApp {
     const addPacient = this.modal.create('AddPacientModalPage');
     addPacient.present();
   }
+  searchPacient(){
+    const searchPacient = this.modal.create('SearchPacientModalPage');
+    searchPacient.present();
+  }
 }
 
