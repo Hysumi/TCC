@@ -22,7 +22,6 @@ export class CalendarPage {
     mode: 'month',
     currentDate: new Date()
   };
-  calendarType: string;
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams, 
@@ -50,19 +49,20 @@ export class CalendarPage {
     this.selectedDay = ev.selectedTime;
     console.log(this.calendar);
   }
+  
   showOptions($event){
     
   }
 
   selectMonth(){
-    this.calendarType = "Month";
+    this.calendar.mode = "month";
   }
   
   selectWeek(){
-    this.calendarType = "Week";
+    this.calendar.mode = "week";
   }
 
   selectDay(){
-    this.calendarType = "Day";
+    this.calendar.mode = "day";
   }
 }
