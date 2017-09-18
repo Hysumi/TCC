@@ -73,21 +73,26 @@ export class CalendarPage {
                             this.selectedDay.getDay(),
                             this.selectedDay.getMonth());
 
-    console.log("Dia: " + this.selectedDay.getDate());
-    console.log("Dia da Semana: " + this.selectedDay.getDay()); //Vai de 0 a 6
-    console.log("Mês: " + this.selectedDay.getMonth());    
+    //console.log("Dia: " + this.selectedDay.getDate());
+    //console.log("Dia da Semana: " + this.selectedDay.getDay()); //Vai de 0 a 6
+    //console.log("Mês: " + this.selectedDay.getMonth());    
   }
 
   changeSelectedWeek(day, wday, month){
     for (var _i = 0; _i < this.selectedWeek.length; _i++) {
-      this.selectedWeek[_i].Day = day - wday + _i;
+      var _day = _i - wday;
+      this.selectedWeek[_i].Day = day + _day;
+      this.selectedWeek[_i].Month = month;
       if(this.selectedWeek[_i].Day < 1){
         this.selectedWeek[_i].Month = month-1;
-        this.isAnoBissexto(this.selectedWeek[_i].Month);
-        this.selectedWeek[_i].Day = this.selectedMonth[this.selectedWeek[_i].Month].Days - wday + _i;        
+        this.isAnoBissexto(month-1);
+        this.selectedWeek[_i].Day += this.selectedMonth[month-1].Days;     
+      }
+      else if (this.selectedWeek[_i].Day > this.selectedMonth[month].Days){
+        this.isAnoBissexto(month);
+        this.selectedWeek[_i].Day =  this.selectedWeek[_i].Day - this.selectedMonth[month].Days;     
       }
     }
-    console.log(this.selectedWeek);    
   }
 
   selectDay(){
