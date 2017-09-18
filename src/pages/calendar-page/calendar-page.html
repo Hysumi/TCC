@@ -30,14 +30,15 @@
     </ion-fab-list>
   </ion-fab>
   
-  <ion-label class="center capitalize">{{ viewTitle }}</ion-label>
-  
-  <calendar [eventSource]="eventSource" 
-            [calendarMode]="calendar.mode" 
-            [currentDate]="calendar.currentDate" 
-            (onEventSelected)="onEventSelected($event)"
-            (onTitleChanged)="onViewTitleChanged($event)" 
-            (onTimeSelected)="onTimeSelected($event)" step="30" class="calendar">
-  </calendar>
+  <div *ngIf="calendar.mode == 'month'">
+    <ion-label class="center capitalize">{{ viewTitle }}</ion-label>      
+    <calendar [eventSource]="eventSource" 
+    [calendarMode]="calendar.mode" 
+    [currentDate]="calendar.currentDate" 
+    (onEventSelected)="onEventSelected($event)"
+    (onTitleChanged)="onViewTitleChanged($event)" 
+    (onTimeSelected)="onTimeSelected($event)" step="30" class="calendar">
+    </calendar>
+  </div>
 
 </ion-content>

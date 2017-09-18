@@ -21,6 +21,10 @@ export class MyApp {
     });
   }
 
+  selectMonth(){
+    
+  }
+
   addPacient(){
     const addPacient = this.modal.create('AddPacientModalPage');
     addPacient.present();

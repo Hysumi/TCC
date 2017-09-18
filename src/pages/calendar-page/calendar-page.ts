@@ -63,7 +63,7 @@ export class CalendarPage {
     
   }
 
-  selectMonth(){
+  public selectMonth(){
     this.calendar.mode = "month";
   }
   
