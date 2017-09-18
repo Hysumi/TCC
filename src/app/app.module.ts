@@ -3,9 +3,10 @@ import { ErrorHandler, NgModule, LOCALE_ID } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+import { HttpModule } from '@angular/http';
 
 import { MyApp } from './app.component';
-import { CalendarModeServiceProvider } from '../providers/calendar-mode-service/calendar-mode-service';
+import { CalendarModeService } from '../providers/calendar-mode-service/calendar-mode-service';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { CalendarModeServiceProvider } from '../providers/calendar-mode-service/
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -24,7 +26,7 @@ import { CalendarModeServiceProvider } from '../providers/calendar-mode-service/
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     { provide: LOCALE_ID, useValue: 'pt-BR' },
-    CalendarModeServiceProvider
+    CalendarModeService
     
   ]
 })
