@@ -11,13 +11,13 @@ export class CalendarModeService {
   viewTitle: string;
   selectedDay = new Date();  
   selectedWeek = [
-    {"Day": -1, "DWeek": 0, "Month": -1},
-    {"Day": -1, "DWeek": 1, "Month": -1},
-    {"Day": -1, "DWeek": 2, "Month": -1},
-    {"Day": -1, "DWeek": 3, "Month": -1},
-    {"Day": -1, "DWeek": 4, "Month": -1},
-    {"Day": -1, "DWeek": 5, "Month": -1},
-    {"Day": -1, "DWeek": 6, "Month": -1}
+    {"Day": -1, "DWeek": 0, "Month": -1, "Week": "Segunda"},
+    {"Day": -1, "DWeek": 1, "Month": -1, "Week": "Terça"},
+    {"Day": -1, "DWeek": 2, "Month": -1, "Week": "Quarta"},
+    {"Day": -1, "DWeek": 3, "Month": -1, "Week": "Quinta"},
+    {"Day": -1, "DWeek": 4, "Month": -1, "Week": "Sexta"},
+    {"Day": -1, "DWeek": 5, "Month": -1, "Week": "Sábado"},
+    {"Day": -1, "DWeek": 6, "Month": -1, "Week": "Domingo"}
   ];
   selectedMonth = [
     {"Name": "Janeiro", "Days": 31},
