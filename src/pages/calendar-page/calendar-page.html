@@ -18,27 +18,26 @@
       <button color="options" ion-fab>
         <ion-icon class="health-book"></ion-icon>
       </button>
-      <button color="options" ion-fab (click)="calendarMode.selectDay()">
+      <button color="options" ion-fab (click)="calendarService.selectDay()">
         <ion-icon class="calendar-day-icon"></ion-icon>
       </button>
-      <button color="options" ion-fab (click)="calendarMode.selectWeek()"> 
+      <button color="options" ion-fab (click)="calendarService.selectWeek()"> 
         <ion-icon class="calendar-week-icon" ></ion-icon>
       </button>
-      <button color="options" ion-fab (click)="calendarMode.selectMonth()" >
+      <button color="options" ion-fab (click)="calendarService.selectMonth()" >
           <ion-icon class="calendar-month-icon"></ion-icon>
       </button>
     </ion-fab-list>
   </ion-fab>
   
-  <div *ngIf="calendarMode.calendar.mode == 'month'">
-    <ion-label class="center capitalize">{{ calendarMode.viewTitle }}</ion-label>      
-    <calendar [eventSource]="calendarMode.eventSource" 
-    [calendarMode]="calendarMode.calendar.mode" 
-    [currentDate]="calendarMode.calendar.currentDate" 
-    (onEventSelected)="calendarMode.onEventSelected($event)"
-    (onTitleChanged)="calendarMode.onViewTitleChanged($event)" 
-    (onTimeSelected)="calendarMode.onTimeSelected($event)" step="30" class="calendar">
+  <div [class.hide]="calendarService.calendar.mode != 'month'">
+    <ion-label class="center capitalize">{{ calendarService.viewTitle }}</ion-label>            
+    <calendar [eventSource]="calendarService.eventSource" 
+    [calendarMode]="calendarService.calendar.mode" 
+    [currentDate]="calendarService.calendar.currentDate" 
+    (onEventSelected)="calendarService.onEventSelected($event)"
+    (onTitleChanged)="calendarService.onViewTitleChanged($event)" 
+    (onTimeSelected)="calendarService.onTimeSelected($event)" step="30" class="calendar">
     </calendar>
   </div>
-
 </ion-content>

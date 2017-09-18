@@ -14,7 +14,7 @@ export class CalendarPage {
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams, 
-    public calendarMode: CalendarModeService) {
+    public calendarService: CalendarModeService) {
   }
  
 }
