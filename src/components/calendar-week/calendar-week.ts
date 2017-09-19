@@ -13,11 +13,7 @@ import { CalendarModeService } from '../../providers/calendar-mode-service/calen
 })
 export class CalendarWeekComponent {
 
-  text: string;
-
   constructor(public calendarService: CalendarModeService) {
-    this.text = 'Hello World';
-    console.log(calendarService.selectedMonth[1].Name);
   }
 
 }

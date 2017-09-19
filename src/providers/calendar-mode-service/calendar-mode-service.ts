@@ -79,11 +79,11 @@ export class CalendarModeService {
         this.selectedWeek[_i].Day += this.selectedMonth[month-1].Days;     
       }
       else if (this.selectedWeek[_i].Day > this.selectedMonth[month].Days){
-        this.isAnoBissexto(month);
+        this.isAnoBissexto(month);      
+        this.selectedWeek[_i].Month = month + 1;
         this.selectedWeek[_i].Day =  this.selectedWeek[_i].Day - this.selectedMonth[month].Days;     
       }
     }
-    console.log(this.selectedWeek);
   }
 
   selectDay(){
