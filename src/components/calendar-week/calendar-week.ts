@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CalendarModeService } from '../../providers/calendar-mode-service/calendar-mode-service';
 
 /**
  * Generated class for the CalendarWeekComponent component.
@@ -14,9 +15,9 @@ export class CalendarWeekComponent {
 
   text: string;
 
-  constructor() {
-    console.log('Hello CalendarWeekComponent Component');
+  constructor(public calendarService: CalendarModeService) {
     this.text = 'Hello World';
+    console.log(calendarService.selectedMonth[1].Name);
   }
 
 }

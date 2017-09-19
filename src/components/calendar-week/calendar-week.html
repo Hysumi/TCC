@@ -1,4 +1,9 @@
-<!-- Generated template for the CalendarWeekComponent component -->
-<div>
-  {{text}}
+<div [class.hide]="calendarService.calendar.mode != 'week'">
+    <ion-card *ngFor="let day of calendarService.selectedWeek">
+        <ion-card-header>
+          {{day.Week}}-feira, {{day.Day}}/{{day.Month + 1}}
+        </ion-card-header>
+        <ion-card-content>
+        </ion-card-content>
+      </ion-card>
 </div>
