@@ -1,7 +1,7 @@
 <div>
   <ion-slides  (ionSlideDidChange)="slideChanged()" loop="true">
-    <ion-slide>
-      <ion-card *ngFor="let day of calendarService.selectedWeek" (click)="selectDay(day)">
+    <ion-slide *ngFor="let week of calendarService.weekVector">
+      <ion-card *ngFor="let day of week" (click)="selectDay(day)">
         <ion-card-header>
           {{day.Week}}, {{day.Day}}/{{day.Month + 1}}
         </ion-card-header>

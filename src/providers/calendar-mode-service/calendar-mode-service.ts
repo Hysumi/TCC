@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
+import * as _ from 'lodash';
 
 @Injectable()
 export class CalendarModeService {
@@ -10,20 +11,16 @@ export class CalendarModeService {
   selectOptions = [];
   viewTitle: string;
   selectedDay = new Date();  
-  isWeek = false;
-  isMonth = false;
-  isDay = false;
-
   weekVector = [];
 
   selectedWeek = [
-    {Day: -1, DWeek: 6, Month: -1, Week: "Domingo"},    
-    {Day: -1, DWeek: 0, Month: -1, Week: "Segunda"},
-    {Day: -1, DWeek: 1, Month: -1, Week: "Terça"},
-    {Day: -1, DWeek: 2, Month: -1, Week: "Quarta"},
-    {Day: -1, DWeek: 3, Month: -1, Week: "Quinta"},
-    {Day: -1, DWeek: 4, Month: -1, Week: "Sexta"},
-    {Day: -1, DWeek: 5, Month: -1, Week: "Sábado"}
+    {Day: -1, DWeek: 0, Month: -1, Week: "Domingo"},    
+    {Day: -1, DWeek: 1, Month: -1, Week: "Segunda"},
+    {Day: -1, DWeek: 2, Month: -1, Week: "Terça"},
+    {Day: -1, DWeek: 3, Month: -1, Week: "Quarta"},
+    {Day: -1, DWeek: 4, Month: -1, Week: "Quinta"},
+    {Day: -1, DWeek: 5, Month: -1, Week: "Sexta"},
+    {Day: -1, DWeek: 6, Month: -1, Week: "Sábado"}
   ];
 
   selectedMonth = [
@@ -66,10 +63,29 @@ export class CalendarModeService {
   
   selectWeek(){
     this.calendar.mode = "week";
-    this.selectedWeek = this.changeSelectedWeek(this.selectedDay.getDate(),
+    this.selectedWeek = this.changeSelectedWeek(this.selectedDay.getDate() - 7,
                                                 this.selectedDay.getDay(),
                                                 this.selectedDay.getMonth());
     
+    var _week0 = _.cloneDeep(this.selectedWeek);
+
+    this.selectedWeek = this.changeSelectedWeek(this.selectedDay.getDate(),
+                                                this.selectedDay.getDay(),
+                                                this.selectedDay.getMonth());
+
+    var _week1 = _.cloneDeep(this.selectedWeek);
+        
+    this.selectedWeek = this.changeSelectedWeek(this.selectedDay.getDate() + 7,
+                                                this.selectedDay.getDay(),
+                                                this.selectedDay.getMonth());
+
+    var _week2 = _.cloneDeep(this.selectedWeek);
+
+    this.weekVector = [
+      _week0,
+      _week1,
+      _week2
+    ]
     //console.log("Dia: " + this.selectedDay.getDate());
     //console.log("Dia da Semana: " + this.selectedDay.getDay()); //Vai de 0 a 6
     //console.log("Mês: " + this.selectedDay.getMonth());    
@@ -97,25 +113,6 @@ export class CalendarModeService {
     return (_selectedWeek);
   }
 
-  changeMode(mode){
-    switch(mode){
-      case 'day': 
-        this.isDay = true;
-        this.isWeek = false;
-        this.isMonth = false;
-      break;
-      case 'week':
-      this.isDay = false;
-      this.isWeek = true;
-      this.isMonth = false;
-      break;
-      case 'month':
-      this.isDay = false;
-      this.isWeek = false;
-      this.isMonth = true;
-      break;
-    }
-  }
   selectDay(){
     this.calendar.mode = "day";
   }
