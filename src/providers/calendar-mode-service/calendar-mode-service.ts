@@ -10,15 +10,22 @@ export class CalendarModeService {
   selectOptions = [];
   viewTitle: string;
   selectedDay = new Date();  
+  isWeek = false;
+  isMonth = false;
+  isDay = false;
+
+  weekVector = [];
+
   selectedWeek = [
+    {Day: -1, DWeek: 6, Month: -1, Week: "Domingo"},    
     {Day: -1, DWeek: 0, Month: -1, Week: "Segunda"},
     {Day: -1, DWeek: 1, Month: -1, Week: "Terça"},
     {Day: -1, DWeek: 2, Month: -1, Week: "Quarta"},
     {Day: -1, DWeek: 3, Month: -1, Week: "Quinta"},
     {Day: -1, DWeek: 4, Month: -1, Week: "Sexta"},
-    {Day: -1, DWeek: 5, Month: -1, Week: "Sábado"},
-    {Day: -1, DWeek: 6, Month: -1, Week: "Domingo"}
+    {Day: -1, DWeek: 5, Month: -1, Week: "Sábado"}
   ];
+
   selectedMonth = [
     {Name: "Janeiro", Days: 31},
     {Name: "Fevereiro", Days: 28},
@@ -59,33 +66,56 @@ export class CalendarModeService {
   
   selectWeek(){
     this.calendar.mode = "week";
-    this.changeSelectedWeek(this.selectedDay.getDate(),
-                            this.selectedDay.getDay(),
-                            this.selectedDay.getMonth());
-
+    this.selectedWeek = this.changeSelectedWeek(this.selectedDay.getDate(),
+                                                this.selectedDay.getDay(),
+                                                this.selectedDay.getMonth());
+    
     //console.log("Dia: " + this.selectedDay.getDate());
     //console.log("Dia da Semana: " + this.selectedDay.getDay()); //Vai de 0 a 6
     //console.log("Mês: " + this.selectedDay.getMonth());    
   }
 
   changeSelectedWeek(day, wday, month){
-    for (var _i = 0; _i < this.selectedWeek.length; _i++) {
+    let _selectedWeek = this.selectedWeek;
+    let _selectedMonth = this.selectedMonth;
+    
+    for (var _i = 0; _i < _selectedWeek.length; _i++) {
       var _day = _i - wday;
-      this.selectedWeek[_i].Day = day + _day;
-      this.selectedWeek[_i].Month = month;
-      if(this.selectedWeek[_i].Day < 1){
-        this.selectedWeek[_i].Month = month-1;
+      _selectedWeek[_i].Day = day + _day;
+      _selectedWeek[_i].Month = month;
+      if(_selectedWeek[_i].Day < 1){
+        _selectedWeek[_i].Month = month-1;
         this.isAnoBissexto(month-1);
-        this.selectedWeek[_i].Day += this.selectedMonth[month-1].Days;     
+        _selectedWeek[_i].Day += _selectedMonth[month-1].Days;     
       }
-      else if (this.selectedWeek[_i].Day > this.selectedMonth[month].Days){
+      else if (_selectedWeek[_i].Day > _selectedMonth[month].Days){
         this.isAnoBissexto(month);      
-        this.selectedWeek[_i].Month = month + 1;
-        this.selectedWeek[_i].Day =  this.selectedWeek[_i].Day - this.selectedMonth[month].Days;     
+        _selectedWeek[_i].Month = month + 1;
+        _selectedWeek[_i].Day = _selectedWeek[_i].Day - _selectedMonth[month].Days;     
       }
     }
+    return (_selectedWeek);
   }
 
+  changeMode(mode){
+    switch(mode){
+      case 'day': 
+        this.isDay = true;
+        this.isWeek = false;
+        this.isMonth = false;
+      break;
+      case 'week':
+      this.isDay = false;
+      this.isWeek = true;
+      this.isMonth = false;
+      break;
+      case 'month':
+      this.isDay = false;
+      this.isWeek = false;
+      this.isMonth = true;
+      break;
+    }
+  }
   selectDay(){
     this.calendar.mode = "day";
   }

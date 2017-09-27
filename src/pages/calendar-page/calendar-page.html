@@ -40,6 +40,8 @@
     </calendar>
   </div>
 
-  <calendar-week></calendar-week>
+  <div ng-if="calendarService.calendar.isWeek">
+      <calendar-week></calendar-week>      
+  </div>
   
 </ion-content>
