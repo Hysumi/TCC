@@ -1,5 +1,9 @@
 <div>
-  <ion-slides  (ionSlideDidChange)="slideChanged()" loop="true">
+  <ion-slides (ionSlideNextStart)="forwardStart()"
+              (ionSlideNextEnd)="forwardEnd()"
+              (ionSlidePrevStart)="backwardStart()"
+              (ionSlidePrevEnd)="backwardEnd()"
+              [loop]="true">
     <ion-slide *ngFor="let week of calendarService.weekVector">
       <ion-card *ngFor="let day of week" (click)="selectDay(day)">
         <ion-card-header>
