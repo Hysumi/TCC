@@ -1,22 +1,27 @@
+.monthview-datetable{
+    td{
+        height: 80px;
+        width: 30px !important;
+    }
+
+    th{
+        height: 20px !important;
+        width: 30px !important;
+    }
+}
+
+.weekview-container{
+    .weekview-allday-table{
+        display: none;
+    }
+    .weekview-normal-event-container{
+        margin-top: 37px !important;
+    }
+}
+
 .event-detail-container{
     display: none;
 }
-td{
-    height: 80px;
-}
-
-th{
-    height: 20px;
-}
-
-.center{
-    text-align: center;
-}
-
-.capitalize, small{
+.weekview-header, small, .toolbar-title{
     text-transform: capitalize;    
-}
-
-.hide {
-    display: none;
 }

@@ -1,11 +1,11 @@
 <ion-header>
   <ion-navbar color="primary">
-    <ion-buttons left>
+    <ion-buttons right>
       <button ion-button icon-only menuToggle>
         <ion-icon name="menu"></ion-icon>
       </button>
     </ion-buttons>
-    <ion-title>Calendário</ion-title>
+    <ion-title>{{calendarService.viewTitle}}</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -30,18 +30,11 @@
     </ion-fab-list>
   </ion-fab>
   
-  <div [class.hide]="calendarService.calendar.mode != 'month'">
-    <ion-label class="center capitalize">{{ calendarService.viewTitle }}</ion-label>            
     <calendar [eventSource]="calendarService.eventSource" 
-    [calendarMode]="calendarService.calendar.mode" 
-    [currentDate]="calendarService.calendar.currentDate" 
-    (onTitleChanged)="calendarService.onViewTitleChanged($event)" 
-    (onTimeSelected)="calendarService.onTimeSelected($event)" step="30" class="calendar">
+              [calendarMode]="calendarService.calendar.mode" 
+              [currentDate]="calendarService.calendar.currentDate" 
+              (onTitleChanged)="calendarService.onViewTitleChanged($event)" 
+              (onTimeSelected)="calendarService.onTimeSelected($event)" step="30" class="calendar">
     </calendar>
-  </div>
-
-  <div *ngIf="calendarService.calendar.mode === 'week'">
-    <calendar-week></calendar-week>      
-  </div>
   
 </ion-content>
