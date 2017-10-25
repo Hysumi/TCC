@@ -5,36 +5,30 @@
         <ion-icon name="menu"></ion-icon>
       </button>
     </ion-buttons>
-    <ion-title>{{calendarService.viewTitle}}</ion-title>
+    <ion-title>Calendário</ion-title>
   </ion-navbar>
+  <ion-segment color="primary" [(ngModel)]="options" color="secondary" (click)="selectOption()">
+      <ion-segment-button value="month">
+        Mês
+      </ion-segment-button>
+      <ion-segment-button value="week">
+        Semana
+      </ion-segment-button>
+      <ion-segment-button value="day">
+        Dia
+      </ion-segment-button>
+  </ion-segment>
 </ion-header>
 
 <ion-content>
-  <ion-fab right bottom>
-    <button ion-fab color="primary">
-      <ion-icon name="arrow-dropleft"></ion-icon>
-    </button>
-    <ion-fab-list side="left">
-      <button color="options" ion-fab>
-        <ion-icon class="health-book"></ion-icon>
-      </button>
-      <button color="options" ion-fab (click)="calendarService.selectDay()">
-        <ion-icon class="calendar-day-icon"></ion-icon>
-      </button>
-      <button color="options" ion-fab (click)="calendarService.selectWeek()"> 
-        <ion-icon class="calendar-week-icon" ></ion-icon>
-      </button>
-      <button color="options" ion-fab (click)="calendarService.selectMonth()" >
-          <ion-icon class="calendar-month-icon"></ion-icon>
-      </button>
-    </ion-fab-list>
-  </ion-fab>
-  
-    <calendar [eventSource]="calendarService.eventSource" 
-              [calendarMode]="calendarService.calendar.mode" 
-              [currentDate]="calendarService.calendar.currentDate" 
-              (onTitleChanged)="calendarService.onViewTitleChanged($event)" 
-              (onTimeSelected)="calendarService.onTimeSelected($event)" step="30" class="calendar">
+    
+    <ion-title class="content-title">{{viewTitle}}</ion-title>
+    
+    <calendar [eventSource]="eventSource" 
+              [calendarMode]="calendar.mode" 
+              [currentDate]="calendar.currentDate" 
+              (onTitleChanged)="onViewTitleChanged($event)" 
+              (onTimeSelected)="onTimeSelected($event)" step="30" class="calendar">
     </calendar>
-  
-</ion-content>
+    
+  </ion-content>
