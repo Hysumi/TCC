@@ -52,7 +52,7 @@ export class CalendarPage {
       }
     }
     else{
-      this.selectedDate = ev.selectedTime;  
+      this.selectedDate = ev.selectedTime;
     }
   }
 
