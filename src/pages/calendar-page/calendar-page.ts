@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage,
          NavController, 
-         NavParams} from 'ionic-angular';
+         NavParams, 
+         ModalController} from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -17,7 +18,8 @@ export class CalendarPage {
   selectedDate;
 
   constructor(public navCtrl: NavController, 
-    public navParams: NavParams) {
+    public navParams: NavParams,
+    private modal: ModalController) {
   }
 
   months = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", 
@@ -40,15 +42,23 @@ export class CalendarPage {
         (ev.events !== undefined && ev.events.length !== 0) + ', disabled: ' + ev.disabled);
     
     if(this.selectedDate){
-      if(this.selectedDate == ev.selectedTime){
-        console.log("igual");
-        if(this.calendar.mode == 'month'){
+      if(this.calendar.mode == 'month'){
+        if(this.selectedDate == ev.selectedTime){        
           this.options = 'day';
           this.calendar.mode = this.options;
         }
       }
       else{
-        this.selectedDate = ev.selectedTime;            
+        this.selectedDate = ev.selectedTime;
+        //Caso tenha eventos, abrir o evento
+        if(ev.events !== undefined && ev.events.length !== 0){
+
+        }
+        else { //Caso não tenha, abrir para cadastrar uma nova consulta
+          console.log(this.selectedDate.getMonth());
+          //Passa um tipo Date pro modal
+          this.criarConsulta(this.selectedDate);
+        }
       }
     }
     else{
@@ -58,5 +68,10 @@ export class CalendarPage {
 
   onEventSelected(event) {
     console.log('Event selected:' + event.startTime + '-' + event.endTime + ',' + event.title);
+  }
+
+  criarConsulta(time){
+    const criarConsulta = this.modal.create('ConsultaModalPage', time);
+    criarConsulta.present();
   }
 }

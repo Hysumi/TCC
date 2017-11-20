@@ -29,5 +29,10 @@ export class MyApp {
     const searchPacient = this.modal.create('SearchPacientModalPage');
     searchPacient.present();
   }
+
+  criarConsulta(){
+    const criarConsulta = this.modal.create('ConsultaModalPage');
+    criarConsulta.present();
+  }
 }
 
