@@ -18,11 +18,30 @@
 
   <ion-list>
     <ion-item>
-      <ion-icon class="search-pacient" item-start></ion-icon>
-      <ion-label floating>Nome:</ion-label>      
+      <ion-label stacked>Nome do Paciente:</ion-label>      
       <ion-input type="text"></ion-input>
     </ion-item>
 
+    <ion-item>
+      <ion-label stacked>Hora de início</ion-label>      
+      <ion-input type="datetime-local"></ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label stacked>Hora do término</ion-label>      
+      <ion-input type="datetime-local"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Tipo de Consulta</ion-label>    
+      <ion-textarea></ion-textarea>  
+    </ion-item>
+
   </ion-list>
+
+  
+  <ion-buttons end>
+    <button ion-button outline item-end>Adicionar Consulta</button>
+  </ion-buttons>
 
 </ion-content>

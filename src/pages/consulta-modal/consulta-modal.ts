@@ -8,7 +8,6 @@ import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angul
   templateUrl: 'consulta-modal.html',
 })
 export class ConsultaModalPage {
-
   public tipoSangue;
   public time;
 
@@ -22,6 +21,7 @@ export class ConsultaModalPage {
     console.log(this.time.getDay());
   }
 
+  
 
   closeAddPage(){
     this.view.dismiss();
