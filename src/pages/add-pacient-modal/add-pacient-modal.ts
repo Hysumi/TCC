@@ -33,6 +33,7 @@ export class AddPacientModalPage {
   }
 
   addPaciente(){
+    this.checkIfNull();
     this.database.list('pacientes-list').push({
       name: this.user.name,
       date: this.user.date,
@@ -47,6 +48,16 @@ export class AddPacientModalPage {
 
     this.user = {} as User;
     this.view.dismiss();
+  }
+
+  checkIfNull(){
+    if(!this.user.address){
+      this.user.address = "Sem Endereço";
+    }
+    if(!this.user.alergia){
+      this.user.address = "Sem Alergia";
+    }
+
   }
   
 }
