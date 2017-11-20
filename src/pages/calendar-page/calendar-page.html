@@ -22,7 +22,7 @@
 
 <ion-content>
     
-    <ion-title class="content-title">{{viewTitle}}</ion-title>
+    <ion-title class="content-title" >{{viewTitle}}</ion-title>
     
     <calendar [eventSource]="eventSource" 
               [calendarMode]="calendar.mode" 
@@ -30,5 +30,4 @@
               (onTitleChanged)="onViewTitleChanged($event)" 
               (onTimeSelected)="onTimeSelected($event)" step="30" class="calendar">
     </calendar>
-    
   </ion-content>

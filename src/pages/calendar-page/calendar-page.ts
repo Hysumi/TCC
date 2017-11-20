@@ -19,6 +19,8 @@ export class CalendarPage {
     public navParams: NavParams) {
   }
 
+  months = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", 
+            "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
   calendar = {
     mode: 'month',
     currentDate: new Date()
@@ -26,10 +28,10 @@ export class CalendarPage {
 
   public selectOption(){
     this.calendar.mode = this.options;
+
   }
   onViewTitleChanged(e){
-    this.viewTitle = e;
-    console.log(e);
+      this.viewTitle = e;
   }
   onTimeSelected(e){
     console.log(e);

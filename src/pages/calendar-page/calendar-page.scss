@@ -16,10 +16,18 @@
     }
     .weekview-normal-event-container{
         margin-top: 37px !important;
-        margin-bottom: 30px !important;
+        //margin-bottom: 30px !important;
     }
 }
 
+.dayview-container{
+    .dayview-allday-table{
+        display: none;
+    }
+    .dayview-normal-event-container{
+        margin-top: 0px !important;
+    }
+}
 .content-title{
     padding: 12px !important;
     text-align: center !important;
