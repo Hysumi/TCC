@@ -5,7 +5,7 @@
         <ion-icon name="menu"></ion-icon>
       </button>
     </ion-buttons>
-    <ion-title>Calendário</ion-title>
+    <ion-title (click) = "refresh()">Calendário</ion-title>
   </ion-navbar>
   <ion-segment [(ngModel)]="options" color="primary" (click)="selectOption()">
       <ion-segment-button value="month">

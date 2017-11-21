@@ -47,6 +47,7 @@ export class CalendarPage {
     this.calendar.mode = this.options;
   }
 
+  
   onViewTitleChanged(e) {
     this.viewTitle = e;
   }
@@ -87,5 +88,9 @@ export class CalendarPage {
   criarConsulta(time) {
     const criarConsulta = this.modal.create('ConsultaModalPage', time);
     criarConsulta.present();
+  }
+
+  refresh(){
+    console.log(this.consultaList);
   }
 }
