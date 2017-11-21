@@ -20,45 +20,10 @@ export class ConsultaModalPage {
     private database: AngularFireDatabase) {
 
     this.consultaRef$ = this.database.list('consulta-list').valueChanges();
-    this.consulta.initialDate = this.navParams.data.toISOString().slice(0, 16);
-    this.consulta.endDate = this.navParams.data.toISOString().slice(0, 16);
   }
   
   closeConsultaPage() {
     this.view.dismiss();
   }
 
-  marcarConsulta() {
-    this.checkIfNull();
-
-    this.database.list('consulta-list').push(this.consulta);
-
-    this.consulta = {} as Consulta;
-    this.view.dismiss();
-  }
-  
-  checkIfNull() {
-    if (!this.consulta.name) {
-      this.consulta.name = "Sem Nome";
-    }
-    if (!this.consulta.phone) {
-      this.consulta.phone = "Sem Telefone";
-    }
-
-    if (!this.consulta.initialDate) {
-      this.consulta.initialDate = new Date().toISOString().slice(0, 16);
-    }
-
-    if (!this.consulta.endDate) {
-      this.consulta.endDate = new Date().toISOString().slice(0, 16);
-    }
-
-    if (!this.consulta.type) {
-      this.consulta.type = "Sem Tipo";
-    }
-
-    if (!this.consulta.obs) {
-      this.consulta.obs = "Sem Observações";
-    }
-  }
 }

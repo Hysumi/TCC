@@ -50,8 +50,6 @@ export class CalendarPage {
   }
 
   onTimeSelected(ev) {
-    //console.log('Selected time: ' + ev.selectedTime + ', hasEvents: ' +
-     // (ev.events !== undefined && ev.events.length !== 0) + ', disabled: ' + ev.disabled);
     if (this.selectedDate) {
       if (this.calendar.mode == 'month') {
         if (this.selectedDate == ev.selectedTime) {
@@ -66,7 +64,7 @@ export class CalendarPage {
         this.selectedDate = ev.selectedTime;
         //Caso tenha eventos, abrir o evento
         if (ev.events !== undefined && ev.events.length !== 0) {
-
+          this.abrirConsulta(this.consultaList);
         }
         else { //Caso não tenha, abrir para cadastrar uma nova consulta
           //Passa um tipo Date pro modal
@@ -80,17 +78,38 @@ export class CalendarPage {
   }
 
   onEventSelected(event) {
-    console.log('Event selected:' + event.startTime + '-' + event.endTime + ',' + event.title);
   }
 
   criarConsulta(time) {
-    const criarConsulta = this.modal.create('ConsultaModalPage', time);
+    const criarConsulta = this.modal.create('AddConsultaModalPage', time);
     criarConsulta.present();
   }
+  abrirConsulta(consultas){
+    var consulta;
+    var timeMinute = +this.selectedDate.toISOString().slice(14,16);
+    var timeHour = +this.selectedDate.toISOString().slice(11,13) - 2;
+    if(timeHour == -1){
+      timeHour = 23;
+    }
+    else if (timeHour == -2){
+      timeHour = 22;
+    }
+    var time = timeHour*60+timeMinute;
 
+    for (var index = 0; index < consultas.length; index++) {
+      var _time = this.convertToMinute(consultas[index].initialDate);
+      if(_time == time && 
+        this.selectedDate.toISOString().slice(0,10) == consultas[index].initialDate.slice(0,10)){
+          consulta = consultas[index];
+      }
+    }
+    console.log(consulta);
+    const abrirConsulta = this.modal.create('ConsultaModalPage', consulta);
+    abrirConsulta.present();
+  }
   refresh(){
     if(this.consultaList.length > 0){
-      this.eventSource = this.createEvents();
+      this.eventSource = this.getEvents();
     }
   }
 
@@ -100,7 +119,7 @@ export class CalendarPage {
     return minute+hour;
   }
 
-  createEvents() {
+  getEvents() {
     var events = [];
     for (var i = 0; i < this.consultaList.length; i += 1) {
       var startTime;
@@ -108,7 +127,7 @@ export class CalendarPage {
       var startMinute = this.convertToMinute(this.consultaList[i].initialDate);
       var endMinute = this.convertToMinute(this.consultaList[i].endDate);
       var day = +this.consultaList[i].initialDate.slice(8, 10);
-      var month = +this.consultaList[i].initialDate.slice(5, 7);
+      var month = +this.consultaList[i].initialDate.slice(5, 7)-1;
       var year = +this.consultaList[i].initialDate.slice(0, 4);
       startTime = new Date(year, month, day, 0, startMinute);
       endTime = new Date(year, month, day, 0, endMinute);
@@ -118,7 +137,7 @@ export class CalendarPage {
           endTime: endTime,
           allDay: false
       });         
-    }    
+    }
     return events;
   }
 }

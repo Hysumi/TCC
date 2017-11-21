@@ -31,7 +31,7 @@ export class MyApp {
   }
 
   criarConsulta(){
-    const criarConsulta = this.modal.create('ConsultaModalPage', new Date());
+    const criarConsulta = this.modal.create('AddConsultaModalPage', new Date());
     criarConsulta.present();
   }
 }
