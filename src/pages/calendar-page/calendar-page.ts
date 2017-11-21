@@ -6,7 +6,6 @@ import {
   ModalController
 } from 'ionic-angular';
 import { AngularFireDatabase } from 'angularfire2/database';
-import { ConsultaCalendar } from '../../models/consulta/consulta-calendar';
 import { Consulta } from '../../models/consulta/consulta';
 
 @IonicPage()
@@ -22,9 +21,7 @@ export class CalendarPage {
   viewTitle: string;
   selectedDay = new Date();
   selectedDate;
-
-  consultaList = []
-  consultaCalendarList = {} as ConsultaCalendar[];
+  consultaList = [];
 
   months = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho",
     "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
@@ -53,14 +50,16 @@ export class CalendarPage {
   }
 
   onTimeSelected(ev) {
-    console.log('Selected time: ' + ev.selectedTime + ', hasEvents: ' +
-      (ev.events !== undefined && ev.events.length !== 0) + ', disabled: ' + ev.disabled);
-
+    //console.log('Selected time: ' + ev.selectedTime + ', hasEvents: ' +
+     // (ev.events !== undefined && ev.events.length !== 0) + ', disabled: ' + ev.disabled);
     if (this.selectedDate) {
       if (this.calendar.mode == 'month') {
         if (this.selectedDate == ev.selectedTime) {
-          this.options = 'day';
-          this.calendar.mode = this.options;
+            this.options = 'day';
+            this.calendar.mode = this.options;
+        }
+        else{
+          this.selectedDate = ev.selectedTime;
         }
       }
       else {
@@ -70,7 +69,6 @@ export class CalendarPage {
 
         }
         else { //Caso não tenha, abrir para cadastrar uma nova consulta
-          console.log(this.selectedDate.getMonth());
           //Passa um tipo Date pro modal
           this.criarConsulta(this.selectedDate);
         }
@@ -91,6 +89,36 @@ export class CalendarPage {
   }
 
   refresh(){
-    console.log(this.consultaList);
+    if(this.consultaList.length > 0){
+      this.eventSource = this.createEvents();
+    }
+  }
+
+  convertToMinute(time){
+    var minute = +time.slice(14,16);
+    var hour = +time.slice(11,13) * 60;
+    return minute+hour;
+  }
+
+  createEvents() {
+    var events = [];
+    for (var i = 0; i < this.consultaList.length; i += 1) {
+      var startTime;
+      var endTime;
+      var startMinute = this.convertToMinute(this.consultaList[i].initialDate);
+      var endMinute = this.convertToMinute(this.consultaList[i].endDate);
+      var day = +this.consultaList[i].initialDate.slice(8, 10);
+      var month = +this.consultaList[i].initialDate.slice(5, 7);
+      var year = +this.consultaList[i].initialDate.slice(0, 4);
+      startTime = new Date(year, month, day, 0, startMinute);
+      endTime = new Date(year, month, day, 0, endMinute);
+      events.push({
+          title: this.consultaList[i].name,
+          startTime: startTime,
+          endTime: endTime,
+          allDay: false
+      });         
+    }    
+    return events;
   }
 }

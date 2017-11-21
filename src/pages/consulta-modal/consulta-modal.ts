@@ -10,12 +10,6 @@ import { Observable } from 'rxjs/Observable';
   templateUrl: 'consulta-modal.html',
 })
 export class ConsultaModalPage {
-<<<<<<< HEAD
-  public tipoSangue;
-  public time;
-=======
-
->>>>>>> f5fce883425da538eb9a2e48be1c75726c7ceb72
 
   consulta = {} as Consulta;
   consultaRef$: Observable<any[]>;
@@ -27,32 +21,22 @@ export class ConsultaModalPage {
 
     this.consultaRef$ = this.database.list('consulta-list').valueChanges();
     this.consulta.initialDate = this.navParams.data.toISOString().slice(0, 16);
+    this.consulta.endDate = this.navParams.data.toISOString().slice(0, 16);
   }
-
-  ionViewDidLoad() {
-  }
-
   
-
   closeConsultaPage() {
     this.view.dismiss();
   }
 
   marcarConsulta() {
     this.checkIfNull();
-    this.database.list('consulta-list').push({
-      name: this.consulta.name,
-      phone: this.consulta.phone,
-      initialDate: this.consulta.initialDate,
-      endDate: this.consulta.endDate,
-      type: this.consulta.type,
-      obs: this.consulta.obs
-    });
+
+    this.database.list('consulta-list').push(this.consulta);
 
     this.consulta = {} as Consulta;
     this.view.dismiss();
   }
-
+  
   checkIfNull() {
     if (!this.consulta.name) {
       this.consulta.name = "Sem Nome";
