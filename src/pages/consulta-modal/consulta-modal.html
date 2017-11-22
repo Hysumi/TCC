@@ -19,38 +19,39 @@
   <ion-list>
     <ion-item>
       <ion-label stacked>Nome do Paciente:</ion-label>      
-      <ion-input   type="text"></ion-input>
+      <ion-input  [(ngModel)]="consulta.name" type="text"></ion-input>
     </ion-item>
     
     <ion-item>
         <ion-label stacked>Telefone:</ion-label>      
-        <ion-input  type="text"></ion-input>
+        <ion-input [(ngModel)]="consulta.phone" type="text"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label stacked>Data e Hora de Início:</ion-label>      
-      <ion-input type="datetime-local"></ion-input>
+      <ion-input [(ngModel)]="consulta.initialDate" type="datetime-local"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label stacked>Data e Hora do Término:</ion-label>      
-      <ion-input type="datetime-local"></ion-input>
+      <ion-input [(ngModel)]="consulta.endDate" type="datetime-local"></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label stacked>Tipo de Consulta: </ion-label>    
-      <ion-textarea  ></ion-textarea>    
+      <ion-textarea [(ngModel)]="consulta.type" ></ion-textarea>    
     </ion-item>
 
     <ion-item>
         <ion-label stacked>Observações: </ion-label>    
-        <ion-textarea ></ion-textarea>    
+        <ion-textarea [(ngModel)]="consulta.obs"></ion-textarea>    
     </ion-item>
     
   </ion-list>
 
-  <ion-buttons end>
-    <button ion-button outline item-end (click)="marcarConsulta()">Marcar Consulta</button>
+  <ion-buttons>
+    <button ion-button outline class="button-size" (click)="buscarPerfil()">Perfil do Paciente</button>
+    <button ion-button outline class="button-size" (click)="atualizarConsulta()">Atualizar Consulta</button>
   </ion-buttons>
 
 </ion-content>
