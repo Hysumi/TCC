@@ -5,7 +5,6 @@ import {
   NavParams,
   ModalController
 } from 'ionic-angular';
-import { AngularFireDatabase } from 'angularfire2/database';
 import { Consulta } from '../../models/consulta/consulta';
 
 @IonicPage()
@@ -32,12 +31,7 @@ export class CalendarPage {
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
-    private modal: ModalController,
-    private database: AngularFireDatabase) {
-
-    this.database.list<Consulta>('consulta-list').valueChanges().subscribe(_data =>{
-      this.consultaList = _data;
-    });    
+    private modal: ModalController) {  
   }
 
   public selectOption() {

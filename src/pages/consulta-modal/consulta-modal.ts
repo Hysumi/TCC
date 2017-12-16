@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
-import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 
 @IonicPage()
@@ -15,12 +14,7 @@ export class ConsultaModalPage {
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
-    private view: ViewController,
-    private database: AngularFireDatabase) {
-
-    this.consultaRef$ = this.database.list('consulta-list').valueChanges();
-    this.consulta = this.navParams.data;
-    console.log(this.consulta);
+    private view: ViewController) {
   }
   
   closeConsultaPage() {
