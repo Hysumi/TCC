@@ -26,6 +26,8 @@ export class ConsultaModalPage {
   }
 
   buscarPerfil(){
-    this.closeConsultaPage();    
+    var isSearch = true;
+    var consultaSearch = {isSearch: isSearch, consulta: this.consulta};
+    this.view.dismiss(consultaSearch);
   }
 }

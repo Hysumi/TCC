@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { ModalController } from 'ionic-angular';
+import { PacienteProvider } from '../../providers/paciente/paciente';
 
 @Injectable()
 export class CalendarModeService {
@@ -17,7 +18,7 @@ export class CalendarModeService {
     currentDate: this.selectedDay
   };
 
-  constructor(public http: Http, public modal: ModalController) {
+  constructor(public http: Http, public modal: ModalController, public paciente: PacienteProvider) {
   }
 
   
@@ -89,6 +90,11 @@ export class CalendarModeService {
     abrirConsulta.present();
     abrirConsulta.onDidDismiss(data => {
       if(data){
+        if(data.isSearch){
+          var infos = {nome: data.consulta.name, rg: data.consulta.rg};
+          this.paciente.pacienteFromConsulta(infos);
+        }
+        else{
         let eventIndex;
         let eventData = data;
         for (var index = 0; index < this.eventSource.length; index++) {
@@ -105,7 +111,8 @@ export class CalendarModeService {
         setTimeout(()=> {
           this.eventSource = events;
         });
-      }
+      }        
+    }
     });
   }
 }

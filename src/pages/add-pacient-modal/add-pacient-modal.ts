@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { User } from '../../models/user/user';
 import { PacienteProvider } from '../../providers/paciente/paciente';
+
 @IonicPage()
 @Component({
   selector: 'page-add-pacient-modal',

@@ -41,6 +41,20 @@ export class PacienteProvider {
         this.pacientProfile(data);
       }
     });
+  } 
+
+  pacienteFromConsulta(infos){
+    console.log(infos);    
+    var _paci;
+    for (var index = 0; index < this.pacienteList.length; index++) {
+      if(infos.nome == this.pacienteList[index].name &&
+          infos.rg == this.pacienteList[index].rg){
+          _paci = this.pacienteList[index];
+          continue;
+      }
+    }
+    console.log(_paci);
+    this.pacientProfile(_paci);
   }
 
   pacientProfile(paciente){
