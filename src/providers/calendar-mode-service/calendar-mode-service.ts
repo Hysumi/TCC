@@ -65,7 +65,6 @@ export class CalendarModeService {
   }
 
   addConsulta(){
-    console.log(this.selectedDay);
     let modal = this.modal.create('AddConsultaModalPage', {selectedDay: this.selectedDay});
     modal.present();
     modal.onDidDismiss(data => {
@@ -86,19 +85,21 @@ export class CalendarModeService {
 
   openConsulta(event){
     let beforeEvent = event[0];  
+    console.log(beforeEvent);
     let abrirConsulta = this.modal.create('ConsultaModalPage', {cons: beforeEvent});
     abrirConsulta.present();
     abrirConsulta.onDidDismiss(data => {
       if(data){
         let eventIndex;
         let eventData = data;
-        console.log(eventData);
         for (var index = 0; index < this.eventSource.length; index++) {
           if(beforeEvent.startDate.slice(0,10) == this.eventSource[index].startDate.slice(0,10)){
               eventIndex = index;
               continue;
           }
         }
+        eventData.startTime = new Date(eventData.startDate);
+        eventData.endTime = new Date(eventData.endDate);
         let events = this.eventSource;
         events[eventIndex] = eventData;
         this.eventSource = [];

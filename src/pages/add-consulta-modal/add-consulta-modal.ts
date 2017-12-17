@@ -16,8 +16,6 @@ export class AddConsultaModalPage {
     public navParams: NavParams,
     private view: ViewController) {
       let preselectedDate = moment(this.navParams.get('selectedDay')).format();
-      //this.event.startTime = preselectedDate;
-      //this.event.endTime = preselectedDate;
       this.consulta.startDate = preselectedDate;
       this.consulta.endDate = preselectedDate;
   }
@@ -28,6 +26,8 @@ export class AddConsultaModalPage {
 
   marcarConsulta() {
     this.consulta.title = this.consulta.name + ": " + this.consulta.type;
+    console.log(this.consulta);
+    
     this.view.dismiss(this.consulta);
   }
   
