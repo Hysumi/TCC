@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
-
+import { PacienteProvider } from '../../providers/paciente/paciente';
 
 @IonicPage()
 @Component({
@@ -9,20 +9,24 @@ import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angul
 })
 export class SearchPacientModalPage {
 
-  public tipoSangue;
+  name;
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
-              private view: ViewController) {
+              private view: ViewController,
+              private paciente: PacienteProvider) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AddPacientModalPage');
   }
 
 
   closeAddPage(){
     this.view.dismiss();
+  }
+
+  openProfile(){
+    this.view.dismiss(true);    
   }
   
 }

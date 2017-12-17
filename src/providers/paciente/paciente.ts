@@ -13,7 +13,7 @@ import { ModalController } from 'ionic-angular';
 @Injectable()
 export class PacienteProvider {
   pacienteList = [];
-
+  searchList = [];
   constructor(public http: Http, public modal: ModalController) {
   }
 
@@ -31,6 +31,34 @@ export class PacienteProvider {
         });
       }
     });
+  }
+  
+  searchPacient(){
+    let modal = this.modal.create('SearchPacientModalPage');
+    modal.present();
+    modal.onDidDismiss(data => {
+      if(data){
+        this.pacientProfile();
+      }
+    });
+  }
+
+  findPacient(name){
+    var namesList = [];   
+    for (var index = 0; index < this.pacienteList.length; index++) {
+      var item = this.pacienteList[index];
+      if(item.name.includes(name)){
+        console.log("q");      
+        
+        namesList.push(this.pacienteList[index]);
+      }
+    }
+    this.searchList = namesList;
+  }
+
+  pacientProfile(){
+    let modal = this.modal.create('PerfilPacientePage');
+    modal.present();
   }
 
 }

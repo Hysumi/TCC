@@ -85,7 +85,6 @@ export class CalendarModeService {
 
   openConsulta(event){
     let beforeEvent = event[0];  
-    console.log(beforeEvent);
     let abrirConsulta = this.modal.create('ConsultaModalPage', {cons: beforeEvent});
     abrirConsulta.present();
     abrirConsulta.onDidDismiss(data => {

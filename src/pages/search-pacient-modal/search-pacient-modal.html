@@ -22,9 +22,25 @@
     <ion-item>
       <ion-icon class="search-pacient" item-start></ion-icon>
       <ion-label floating>Nome:</ion-label>      
-      <ion-input type="text"></ion-input>
+      <ion-input type="text" [(ngModel)]="name"></ion-input>
     </ion-item>
 
+    <ion-buttons>
+      <button ion-button outline item-end (click)="paciente.findPacient(name)">Buscar</button>
+    </ion-buttons>
+
+    <ion-card *ngFor="let item of paciente.searchList">
+      <ion-card-header>
+        {{item.name}}
+      </ion-card-header>
+      <ion-card-content>
+        <ion-buttons>
+          <button ion-button outline item-end (click)="openProfile(name)">Ver Perfil</button>
+        </ion-buttons>
+      </ion-card-content>
+    </ion-card>
+
   </ion-list>
+  
 
 </ion-content>
