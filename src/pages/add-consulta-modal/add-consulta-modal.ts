@@ -27,6 +27,7 @@ export class AddConsultaModalPage {
   }
 
   marcarConsulta() {
+    this.consulta.title = this.consulta.name + ": " + this.consulta.type;
     this.view.dismiss(this.consulta);
   }
   

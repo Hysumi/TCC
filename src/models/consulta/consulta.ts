@@ -5,4 +5,5 @@ export interface Consulta{
     endDate: string;
     type: string;
     obs: string;
+    title: string;
 }

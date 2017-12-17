@@ -53,10 +53,9 @@ export class CalendarPage {
         this.selectedDay = ev.selectedTime;
         //Caso tenha eventos, abrir o evento
         if (ev.events !== undefined && ev.events.length !== 0) {
-          //this.abrirConsulta(this.consultaList);
+          this.openConsulta();
         }
         else { //Caso não tenha, abrir para cadastrar uma nova consulta
-          //Passa um tipo Date pro modal
           this.addConsulta();
         }
       }
@@ -67,8 +66,6 @@ export class CalendarPage {
   }
 
   onEventSelected(event) {
-    let start = moment(event.startTime).format('LLLL');
-    let end = moment(event.startTime).format('LLLL');
   }
 
   addConsulta(){
@@ -77,7 +74,6 @@ export class CalendarPage {
     modal.onDidDismiss(data => {
       if(data){
         let eventData = data;
-
         eventData.startTime = new Date(data.startDate);
         eventData.endTime = new Date(data.endDate);
       
@@ -89,5 +85,47 @@ export class CalendarPage {
         });
       }
     });
+  }
+
+  openConsulta(){
+    var consulta;
+    var eventIndex;
+    var timeMinute = +this.selectedDay.toISOString().slice(14,16);
+    var timeHour = +this.selectedDay.toISOString().slice(11,13) - 2;
+    if(timeHour == -1){
+      timeHour = 23;
+    }
+    else if (timeHour == -2){
+      timeHour = 22;
+    }
+    var time = timeHour*60+timeMinute;
+    for (var index = 0; index < this.eventSource.length; index++) {
+      var _time = this.convertToMinute(this.eventSource[index].startDate);
+      if(_time == time && 
+        this.selectedDay.toISOString().slice(0,10) == this.eventSource[index].startDate.slice(0,10)){
+          consulta = this.eventSource[index];
+          eventIndex = index;
+      }
+    }
+    let abrirConsulta = this.modal.create('ConsultaModalPage', {cons: consulta});
+    abrirConsulta.present();
+    abrirConsulta.onDidDismiss(data => {
+      if(data){
+        let eventData = data;
+      
+        let events = this.eventSource;
+        events[eventIndex] = eventData;
+        this.eventSource = [];
+        setTimeout(()=> {
+          this.eventSource = events;
+        });
+      }
+    });
+  }
+
+  convertToMinute(time) {
+    var minute = +time.slice(14,16);
+    var hour = +time.slice(11,13) * 60;
+    return minute+hour;
   }
 }
