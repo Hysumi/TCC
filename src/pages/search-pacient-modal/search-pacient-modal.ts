@@ -10,23 +10,38 @@ import { PacienteProvider } from '../../providers/paciente/paciente';
 export class SearchPacientModalPage {
 
   name;
+  plist = [];
+  showlist = [];
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               private view: ViewController,
               private paciente: PacienteProvider) {
+    this.plist = this.navParams.get('list');                
   }
 
   ionViewDidLoad() {
   }
 
+  findPacient(name){
+    var namesList = [];   
+    for (var index = 0; index < this.plist.length; index++) {
+      var item = this.plist[index];
+      if(item.name.includes(name)){        
+        namesList.push(this.plist[index]);
+      }
+    }
+    this.showlist = namesList;
+  }
 
   closeAddPage(){
+    this.showlist = [];
     this.view.dismiss();
   }
 
-  openProfile(){
-    this.view.dismiss(true);    
+  openProfile(item){
+    this.showlist = [];    
+    this.view.dismiss(item);    
   }
   
 }

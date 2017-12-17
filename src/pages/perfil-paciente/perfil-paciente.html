@@ -1,18 +1,82 @@
-<!--
-  Generated template for the PerfilPacientePage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>perfil-paciente</ion-title>
-  </ion-navbar>
-
-</ion-header>
-
-
-<ion-content padding>
-
-</ion-content>
+  
+    <ion-navbar color="primary">
+      <ion-title>Adicionar Paciente</ion-title>
+      <ion-buttons end>
+        <button ion-button (click)="closeProfilePage()">Fechar</button>
+      </ion-buttons>
+    </ion-navbar>
+  
+  </ion-header>
+  
+  <ion-content padding>
+  
+    <ion-list>
+      <ion-list-header>Informações do Paciente </ion-list-header>
+      <ion-item>
+        <ion-label color="primary">Nome Completo:</ion-label>
+        <ion-input [(ngModel)]="user.name" type="text" placeholder="Nome do Paciente"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label color="primary">E-mail:</ion-label>
+        <ion-input [(ngModel)]="user.email" type="email" placeholder="E-mail"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label color="primary">Data de Nasc.: </ion-label>
+        <ion-input [(ngModel)]="user.date" type="date"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label color="primary">RG: </ion-label>
+        <ion-input [(ngModel)]="user.rg" type="text"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label color="primary">Endereço:</ion-label>
+        <ion-input [(ngModel)]="user.address" type="text" placeholder="Rua/Bairro/Numero"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label color="primary">Telefone:</ion-label>
+        <ion-input [(ngModel)]="user.phone1" type="tel" placeholder="    Contato Principal."></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label color="primary">Telefone 2:</ion-label>
+        <ion-input [(ngModel)]="user.phone2" type="tel" placeholder="(Opcional)"></ion-input>
+      </ion-item>
+    </ion-list>
+  
+    <ion-list>
+      <ion-list-header>
+        <ion-label>Informações Adicionais</ion-label>
+      </ion-list-header>
+  
+      <ion-item>
+        <ion-label color="primary">Tipo Sanguíneo:</ion-label>
+        <ion-select [(ngModel)]="user.bloodType" placeholder="Tipo">
+          <ion-option value="0">A+</ion-option>
+          <ion-option value="1">AB+</ion-option>
+          <ion-option value="2">B+</ion-option>
+          <ion-option value="3">O+</ion-option>
+          <ion-option value="4">A-</ion-option>
+          <ion-option value="5">AB-</ion-option>
+          <ion-option value="6">B-</ion-option>
+          <ion-option value="7">O-</ion-option>
+        </ion-select>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label color="primary">Alergias: </ion-label>    
+        <ion-textarea [(ngModel)]="user.alergia"class="text-height"></ion-textarea>    
+      </ion-item>
+      
+    </ion-list>
+    <ion-buttons>
+      <button ion-button outline (click)="pacientHistory()">Ver Histórico</button>        
+      <button ion-button outline (click)="updateProfile()">Atualizar Perfil</button>
+    </ion-buttons>
+    
+  </ion-content>

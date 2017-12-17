@@ -26,16 +26,16 @@
     </ion-item>
 
     <ion-buttons>
-      <button ion-button outline item-end (click)="paciente.findPacient(name)">Buscar</button>
+      <button ion-button outline item-end (click)="findPacient(name)">Buscar</button>
     </ion-buttons>
 
-    <ion-card *ngFor="let item of paciente.searchList">
+    <ion-card *ngFor="let item of showlist">
       <ion-card-header>
         {{item.name}}
       </ion-card-header>
       <ion-card-content>
         <ion-buttons>
-          <button ion-button outline item-end (click)="openProfile(name)">Ver Perfil</button>
+          <button ion-button outline item-end (click)="openProfile(item)">Ver Perfil</button>
         </ion-buttons>
       </ion-card-content>
     </ion-card>

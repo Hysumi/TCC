@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
+import { PacienteProvider } from '../../providers/paciente/paciente';
+import { User } from '../../models/user/user';
 
 /**
  * Generated class for the PerfilPacientePage page.
@@ -15,11 +17,38 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class PerfilPacientePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  paciente;
+  user = {} as User;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+              public pp: PacienteProvider, private view: ViewController) {
+    this.paciente = this.navParams.get('data');
+    this.user = {
+      name: this.paciente.name,
+      date: this.paciente.date,
+      rg: this.paciente.rg,
+      address: this.paciente.address,
+      phone1: this.paciente.phone1,
+      phone2: this.paciente.phone2,
+      email: this.paciente.email,
+      bloodType: this.paciente.bloodType,
+      alergia: this.paciente.alergia
+    }
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad PerfilPacientePage');
   }
 
+  closeProfilePage(){
+    this.view.dismiss();
+  }
+
+  updateProfile(){
+    this.view.dismiss(this.user);
+  }
+
+  pacientHistory(){
+    var isHistory = {isHistory: true, user: this.user};
+    this.view.dismiss(isHistory);    
+  }
 }

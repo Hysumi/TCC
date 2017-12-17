@@ -34,31 +34,41 @@ export class PacienteProvider {
   }
   
   searchPacient(){
-    let modal = this.modal.create('SearchPacientModalPage');
+    let modal = this.modal.create('SearchPacientModalPage', {list: this.pacienteList} );
     modal.present();
     modal.onDidDismiss(data => {
       if(data){
-        this.pacientProfile();
+        this.pacientProfile(data);
       }
     });
   }
 
-  findPacient(name){
-    var namesList = [];   
-    for (var index = 0; index < this.pacienteList.length; index++) {
-      var item = this.pacienteList[index];
-      if(item.name.includes(name)){
-        console.log("q");      
-        
-        namesList.push(this.pacienteList[index]);
-      }
-    }
-    this.searchList = namesList;
-  }
-
-  pacientProfile(){
-    let modal = this.modal.create('PerfilPacientePage');
+  pacientProfile(paciente){
+    let modal = this.modal.create('PerfilPacientePage', {data: paciente});
     modal.present();
+    modal.onDidDismiss(data => {
+      if(data){
+        if(data.isHistory){
+
+        }
+        else{
+          var eventIndex;
+          for (var index = 0; index < this.pacienteList.length; index++) {
+            if(data.name == this.pacienteList[index].name){
+                eventIndex = index;
+                continue;
+            }
+          }
+          let _plist = this.pacienteList;
+          _plist[eventIndex] = data;
+          this.pacienteList = [];
+          setTimeout(()=> {
+            this.pacienteList = _plist;
+            console.log(this.pacienteList);
+          });
+        }
+      }
+    });
   }
 
 }
