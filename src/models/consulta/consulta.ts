@@ -1,7 +1,7 @@
 export interface Consulta{
     name: string;
     phone: string;
-    initialDate: string;
+    startDate: string;
     endDate: string;
     type: string;
     obs: string;

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { Consulta } from '../../models/consulta/consulta';
-import { Observable } from 'rxjs/Observable';
+import * as moment from 'moment';
 
 @IonicPage()
 @Component({
@@ -11,13 +11,15 @@ import { Observable } from 'rxjs/Observable';
 export class AddConsultaModalPage {
 
   consulta = {} as Consulta;
-  consultaRef$: Observable<any[]>;
 
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     private view: ViewController) {
-    this.consulta.initialDate = this.navParams.data.toISOString().slice(0, 16);
-    this.consulta.endDate = this.navParams.data.toISOString().slice(0, 16);
+      let preselectedDate = moment(this.navParams.get('selectedDay')).format();
+      //this.event.startTime = preselectedDate;
+      //this.event.endTime = preselectedDate;
+      this.consulta.startDate = preselectedDate;
+      this.consulta.endDate = preselectedDate;
   }
   
   closeConsultaPage() {
@@ -25,33 +27,7 @@ export class AddConsultaModalPage {
   }
 
   marcarConsulta() {
-    this.checkIfNull();
-    this.consulta = {} as Consulta;
-    this.view.dismiss();
+    this.view.dismiss(this.consulta);
   }
   
-  checkIfNull() {
-    if (!this.consulta.name) {
-      this.consulta.name = "Sem Nome";
-    }
-    if (!this.consulta.phone) {
-      this.consulta.phone = "Sem Telefone";
-    }
-
-    if (!this.consulta.initialDate) {
-      this.consulta.initialDate = new Date().toISOString().slice(0, 16);
-    }
-
-    if (!this.consulta.endDate) {
-      this.consulta.endDate = new Date().toISOString().slice(0, 16);
-    }
-
-    if (!this.consulta.type) {
-      this.consulta.type = "Sem Tipo";
-    }
-
-    if (!this.consulta.obs) {
-      this.consulta.obs = "Sem Observações";
-    }
-  }
 }

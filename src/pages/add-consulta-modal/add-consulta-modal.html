@@ -29,12 +29,12 @@
 
     <ion-item>
       <ion-label stacked>Data e Hora de Início:</ion-label>      
-      <ion-input [(ngModel)]="consulta.initialDate" type="datetime-local"></ion-input>
+      <ion-datetime displayFormat="DD/MM/YYYY HH:mm" pickerFormat="DD/MM/YYYY HH:mm" [(ngModel)]="consulta.startDate"></ion-datetime>
     </ion-item>
 
     <ion-item>
       <ion-label stacked>Data e Hora do Término:</ion-label>      
-      <ion-input [(ngModel)]="consulta.endDate" type="datetime-local"></ion-input>
+      <ion-datetime displayFormat="DD/MM/YYYY HH:mm" pickerFormat="DD/MM/YYYY HH:mm" [(ngModel)]="consulta.endDate"></ion-datetime>
     </ion-item>
 
     <ion-item>
