@@ -4,18 +4,17 @@
             <ion-title>Menu</ion-title>
         </ion-toolbar>
     </ion-header>
-    
     <ion-content>
         <ion-list-header>
             <ion-icon name="person" item-start></ion-icon>
             <ion-label> Paciente </ion-label>
         </ion-list-header>
 
-        <button ion-item detail-none (click)="addPacient()">
+        <button ion-item detail-none (click)="calendarService.addPacient()">
             <ion-icon class="add-pacient" item-start></ion-icon>
             <ion-label> Adicionar Paciente </ion-label>
         </button>
-        <button ion-item no-lines detail-none (click)="searchPacient()">
+        <button ion-item no-lines detail-none (click)="calendarService.searchPacient()">
             <ion-icon class="search-pacient" item-start></ion-icon>
             <ion-label> Buscar Paciente </ion-label>
         </button>
@@ -26,7 +25,7 @@
             <ion-label> Consulta </ion-label>
         </ion-list-header>
 
-        <button ion-item detail-none (click)="criarConsulta()">
+        <button ion-item detail-none (click)="calendarService.addConsultaLateral()">
             <ion-icon class="health-book" item-start></ion-icon>
             <ion-label> Agendar uma consulta </ion-label>
         </button>

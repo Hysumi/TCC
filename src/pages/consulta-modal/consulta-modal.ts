@@ -13,7 +13,7 @@ export class ConsultaModalPage {
   constructor(public navCtrl: NavController,
     public navParams: NavParams,
     private view: ViewController) {
-      this.consulta = this.navParams.get('cons');      
+      this.consulta = this.navParams.get('cons');
   }
   
   closeConsultaPage() {
@@ -21,7 +21,7 @@ export class ConsultaModalPage {
   }
 
   atualizarConsulta(){
-    this.consulta.title = this.consulta.name + ": " + this.consulta.type;    
+    this.consulta.title = this.consulta.name + ": " + this.consulta.type;
     this.view.dismiss(this.consulta);
   }
 
