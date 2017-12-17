@@ -7,6 +7,7 @@ import { HttpModule } from '@angular/http';
 
 import { MyApp } from './app.component';
 import { CalendarModeService } from '../providers/calendar-mode-service/calendar-mode-service';
+import { PacienteProvider } from '../providers/paciente/paciente';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { CalendarModeService } from '../providers/calendar-mode-service/calendar
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     { provide: LOCALE_ID, useValue: 'pt-BR' },
-    CalendarModeService
+    CalendarModeService,
+    PacienteProvider
   ]
 })
 export class AppModule {}

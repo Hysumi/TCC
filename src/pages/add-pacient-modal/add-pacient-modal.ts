@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { User } from '../../models/user/user';
-
+import { PacienteProvider } from '../../providers/paciente/paciente';
 @IonicPage()
 @Component({
   selector: 'page-add-pacient-modal',
@@ -13,11 +13,11 @@ export class AddPacientModalPage {
   
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
-              private view: ViewController) {
+              private view: ViewController,
+              public paciente: PacienteProvider) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AddPacientModalPage');
   }
 
 
